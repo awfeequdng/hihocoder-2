@@ -12,7 +12,7 @@ bool operator<(Point a,Point b){
 	return a.x<b.x;
 }
 bool operator==(Point a,Point b){
-	return a.x==b.x && a.y==b.y;
+	return (a.x==b.x && a.y==b.y);
 }
 struct Node{
 	Point l,r;
@@ -25,35 +25,48 @@ struct Node{
 		}
 	}
 };
-bool operator<(Node a,Node b){
-	if(a.l==b.l) return a.r<b.r;
-	return a.l<b.l;
-}
 Node nodes[4];
+bool inter(int i,int j){
+	Node a=nodes[i],b=nodes[j];
+	return (a.l==b.l || a.r==b.r || a.l==b.r || a.r==b.l);
+}
+bool vertical(int i,int j){
+	Node a=nodes[i],b=nodes[j];
+	return (a.r.y-a.l.y)*(b.r.y-b.l.y)+(a.r.x-a.l.x)*(b.r.x-b.l.x)==0;
+}
 bool solve(){
-	sort(nodes,nodes+4);
-	// rep(i,0,4){
-	// 	printf("x1=%d,y1=%d,x2=%d,y2=%d\n",nodes[i].l.x,nodes[i].l.y,nodes[i].r.x,nodes[i].r.y);
-	// }
-	Node &a=nodes[0],&b=nodes[1],&c=nodes[2],&d=nodes[3];
-	if(a.l==b.l && a.r==c.l && d.l==b.r && d.r==c.r){
-		
-	}else{
-		return false;
+	int cnt=0;
+	rep(i,0,4){
+		rep(j,i+1,4){
+			if(inter(i,j)){
+				if(vertical(i,j))	
+					cnt++;
+				else 
+					return false;
+			}
+		}
 	}
+	// printf("cnt=%d\n",cnt);
+	return cnt==4;
 }
 int main(){
 	freopen("data.txt","r",stdin);
 	int t;
 	scanf("%d",&t);
-	// printf("t=%d\n",t);
 	while(t--){
+		bool ok=true;
 		rep(i,0,4){
 			int x1,x2,y1,y2;
 			scanf("%d %d %d %d",&x1,&y1,&x2,&y2);
+			if(x1==x2 && y1==y2){
+				ok=false;
+			}
 			nodes[i] = Node(Point(x1,y1),Point(x2,y2));
 		}
-		printf("%s\n",solve()?"YES":"NO");
+		if(!ok)
+			printf("NO\n");
+		else
+			printf("%s\n",solve()?"YES":"NO");
 	}
 	return 0;
 }
