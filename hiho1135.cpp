@@ -1,8 +1,6 @@
-#include <cstdio>
-#include <cstring>
-#include <vector>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
+#define rep(i,a,b) for(int i=a;i<b;i++)
 
 const int MAXN=20002;
 int xx,yy,zz;
@@ -18,14 +16,12 @@ void order(int&x,int&y,int&z){
 	if(z<x) swap(x,z);
 	if(z<y) swap(y,z);
 }
-int main(){
-	freopen("data.txt","r",stdin);
-	scanf("%d%d%d\n",&xx,&yy,&zz);
-	order(xx,yy,zz);
+int solve(){
 	char cc;
 	int r=0,y=0,b=0,cnt=0,maxV=0;
-	int c,d,e;
-	while(scanf("%c",&cc)==1){
+	int c,d,e,l=strlen(s);
+	rep(i,0,l){
+		char cc=s[i];
 		cnt++;
 		if(cnt>maxV) maxV=cnt;
 		if(cc=='R') r++;
@@ -39,6 +35,13 @@ int main(){
 			cnt=0,r=0,y=0,b=0;
 		}
 	}
-	printf("%d\n",maxV);
+	return maxV;
+}
+int main(){
+	freopen("data.txt","r",stdin);
+	scanf("%d%d%d\n",&xx,&yy,&zz);
+	order(xx,yy,zz);
+	scanf("%s",s);
+	printf("%d\n",solve());
 	return 0;
 }
