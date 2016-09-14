@@ -1,3 +1,4 @@
+/* 堆(h)的作用是保持二叉树的结构，防止二叉树退化 */
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,a,b) for(int i=a;i<b;i++)
