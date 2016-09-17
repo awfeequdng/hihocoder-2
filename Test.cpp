@@ -1,19 +1,9 @@
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-using namespace std;
+#include <bits/stdc++.h>
+int num[]={7,6,5,4,3,2,1};
+int n=7;
 
-int main(int argc, char const *argv[]){
-    int*num = new int[3];
-    num[0]=0;
-    num[1]=2;
-    num[2]=4;
-    /*
-		* 1
-		+ 2
-    */
-    
-    printf("%d\n",*(num+1));			
+int main(){
 
+    printf("This is a \n");
     return 0;
 }
