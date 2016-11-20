@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/*  测试从新电脑提交    */
+>>>>>>> 3a750285d93a15108dc456afcaa30704cb53fd2f
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,a,b) for(int i=a;i<b;i++)
